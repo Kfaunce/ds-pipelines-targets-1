@@ -6,21 +6,16 @@
     library(sbtools)
     library(whisker)
 
-# Paths and filenames
-  
-    fetch_output_dir <- 'fetch/out/' # fetch output directory
-    process_output_dir <- 'process/out/' # process output directory
-    fetch_src_dir <- 'fetch/src/'
-    process_src_dir <- 'process/src/'
+# model input data
     
-    model_data <- paste(fetch_output_dir, 'model_RMSEs.csv') # model RMSE output file
+    model_data <- paste('1_fetch/out/outmodel_RMSEs.csv') # model RMSE output file
     
 # functions
     
-    source(paste0(fetch_src_dir, '1_getData.R'))
-    source(paste0(process_src_dir, '2_prepData.R'))
-    source(paste0(process_src_dir, '3_plotData.R'))
-    source(paste0(process_src_dir, '4_saveDiagnostics.R'))
+    source('1_fetch/src/getData.R')
+    source('2_process/src/prepData.R')
+    source('3_visualize/src/plotData.R')
+    source('2_process/src/saveDiagnostics.R')
     
 # Download data - desired output file name, ScienceBase item number, ScienceBase item file name
   
@@ -32,13 +27,13 @@
 
 # Plot data   
       
-    plotData('figure_1.png')
+    plotData('3_visualize/out/figure_1.png')
 
 # Save processed data
         
-    readr::write_csv(eval_data, file = file.path(process_output_dir, 'model_summary_results.csv'))
+    readr::write_csv(eval_data, file = file.path('2_process/out/model_summary_results.csv'))
         
 # Model diagnostics
         
-    saveDiagnostics(eval_data, 'model_diagnostic_text.txt')
+    saveDiagnostics(eval_data, '2_process/out/model_diagnostic_text.txt')
     
