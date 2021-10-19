@@ -46,4 +46,6 @@ make_plot <- function (out_filepath, data) { # Create a plot
   
   dev.off()
   
+  return(out_filepath)
+  
 }

@@ -23,7 +23,7 @@ list(
   #Save the processed data
   tar_target(
     model_summary_results_csv,
-    readr::write_csv(eval_data, file = "2_process/out/model_summary_results.csv"), 
+    write_csv_return(eval_data, "2_process/out/model_summary_results.csv"), 
     format = "file"
   ),
   # Save the model diagnostics
