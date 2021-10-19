@@ -1,6 +1,6 @@
-prepData <- function (output_fileName) { # Prepare the data for plotting
+process_data <- function (in_filepath) { # Prepare the data for plotting
   
-  readr::read_csv(output_fileName, col_types = 'iccd') %>%
+  readr::read_csv(in_filepath, col_types = 'iccd') %>%
     filter(str_detect(exper_id, 'similar_[0-9]+')) %>%
     mutate(col = case_when(
       model_type == 'pb' ~ '#1b9e77',
